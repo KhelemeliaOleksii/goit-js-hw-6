@@ -31,21 +31,20 @@ const gallary = document.querySelector(".gallery");
 //console.log(gallaryImgs);
 const listItemsImages = images
   .map((item) => 
-  `<li class='gallery-item' > <img src="${item.url}" alt="${item.alt}" width="100%" style="display:block;"></li>\n`).join("");
+  `<li class='gallery-item' > <img src="${item.url}" alt="${item.alt}" width="100%" height="100%" style="display:block;"></li>\n`).join("");
 //console.log(listItemsImages);
 gallary.insertAdjacentHTML('beforeend', listItemsImages);
 
+// gallary: add css styles
 gallary.style.display = "flex";
 gallary.style.flexWrap = "wrap";
 gallary.style.flexDirection = "row";
 gallary.style.justifyContent = "space-between";
-//gallary.style.listStyle = "none;";
 
-//gallary.style.listStyleType = "none";
-
-//gallaryImgs.style.flexBasis = "auto";
+// galaryItems: add css styles
 const gallaryItems = document.querySelectorAll('.gallery-item');
 gallaryItems.forEach((item) => {
    item.style.flexBasis = "calc((100% / 3) - (100% / 30)) ";
    item.style.listStyleType = "none"; 
+   item.style.objectFit = "cover"; 
 });
