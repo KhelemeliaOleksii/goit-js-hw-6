@@ -5,17 +5,14 @@
 
 const elementInput = document.querySelector('#name-input');
 const elementSpan = document.querySelector('#name-output');
-//console.log(elementInput, elementSpan);
+// default value of name have been added
+const defaultValue = 'Anonymous';
 
-elementInput.addEventListener('input', (event) => elementSpan.textContent = event.currentTarget.value);
+elementInput.addEventListener('input', elementInputListener);
 
-
-// if event="blur" next code will be used
-// elementInput.addEventListener('blur', elementInputDisplayContent);
-
-// function elementInputDisplayContent (event) {
-//     if (event.currentTarget.value.length > 0){ 
-//         elementSpan.textContent = event.currentTarget.value;
-//     }
-// }
+function elementInputListener (event) {
+    // add default value if input area is empy 
+    elementSpan.textContent = 
+            event.currentTarget.value.length <= 0 ?  defaultValue : event.currentTarget.value;
+}
 

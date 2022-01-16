@@ -28,25 +28,34 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
+// Стало 
 function createBoxes(amount) {
-  //  const divCollection = new Array(amount).fill('0'); // працює метод створення масиву, коли функція визивається сама, 
-                        // не працює, коли виклик функції йде із функції createBtnListener ()
-                        // чого???????
   const divCollection = [];
-  for (let i=0; i<amount; i++ ) {
-    divCollection.push('');
+  let parameter = 30;
+  for (let i = 0; i < amount; i+=1) {  
+    divCollection.push(`<div style="width: ${parameter += 10*i}px; height: ${parameter}px; background-color: ${getRandomHexColor()}"></div>`);
   }
-  const markup = divCollection.
-      map((item,index) => { 
-        const parameter = 30 + index*10;
-        return `<div style="width: ${parameter}px; height: ${parameter}px; background-color: ${getRandomHexColor()}"></div>`   
-        }
-      ).join('');
   const div = document.querySelector('#boxes');
-  div.innerHTML = markup;
+  div.innerHTML = divCollection.join('');
 }
 
-//destroyBoxes();
+// Було
+// function createBoxes(amount) {
+//   //  const divCollection = new Array(amount).fill('0'); 
+//   const divCollection = [];
+//   for (let i=0; i<amount; i++ ) {
+//     divCollection.push('');
+//   }
+//   const markup = divCollection.
+//       map((item,index) => { 
+//         const parameter = 30 + index*10;
+//         return `<div style="width: ${parameter}px; height: ${parameter}px; background-color: ${getRandomHexColor()}"></div>`   
+//         }
+//       ).join('');
+//   const div = document.querySelector('#boxes');
+//   div.innerHTML = markup;
+// }
+
 //Создай функцию destroyBoxes(), которая очищает содержимое div#boxes, 
 // тем самым удаляя все созданные элементы.
 function destroyBoxes() {

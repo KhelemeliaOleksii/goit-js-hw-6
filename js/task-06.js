@@ -10,11 +10,12 @@
 //которые мы уже добавили в исходные файлы задания.
 
 const validationInput = document.querySelector('#validation-input');
-//console.log(validationInput);
 validationInput.addEventListener('blur', validationInputListener);
 
 function validationInputListener (event) {
-    if (event.currentTarget.value.length >= validationInput.dataset.length) {
+    // verification condition have been changed
+    // valid style applies only on value 6
+    if (event.currentTarget.value.length !== +validationInput.dataset.length) {
         if (validationInput.classList.contains('valid')) {
             validationInput.classList.remove('valid');
         }
@@ -24,5 +25,5 @@ function validationInputListener (event) {
             validationInput.classList.remove('invalid');
         }
         validationInput.classList.add('valid');
-    } 
+    }
 }
